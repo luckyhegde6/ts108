@@ -1,4 +1,3 @@
-import React from 'react';
 import type { UserListProps } from '../../types';
 import { UserRow } from './UserRow';
 

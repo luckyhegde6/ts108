@@ -1,4 +1,3 @@
-import React from 'react';
 import type { MetricChartProps } from '../../types';
 
 export function MetricChart({ metrics, title, height = 300 }: MetricChartProps) {

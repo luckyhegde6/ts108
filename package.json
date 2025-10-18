@@ -9,8 +9,9 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint 'src/**/*.{ts,tsx}' --fix",
-    "test": "vitest",
-    "coverage": "vitest --coverage"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",

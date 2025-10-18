@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import { createContext, useContext, useReducer, ReactNode } from 'react';
 import type { DashboardState, DashboardAction, User, Metric, UserFormData } from '../types';
 import { apiClient } from '../services/apiClient';
 import { logger } from '../utils/logger';

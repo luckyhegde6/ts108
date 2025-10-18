@@ -245,7 +245,17 @@ class MockApiClient implements ApiClient {
       const userIndex = mockUsers.findIndex(u => u.id === userId);
       
       if (userIndex !== -1) {
-        const updatedUser = { ...mockUsers[userIndex], ...userData };
+        const existingUser = mockUsers[userIndex]!;
+        const updatedUser: User = {
+          id: existingUser.id,
+          name: userData.name ?? existingUser.name,
+          email: userData.email ?? existingUser.email,
+          role: userData.role ?? existingUser.role,
+          isActive: userData.isActive ?? existingUser.isActive,
+          avatar: existingUser.avatar,
+          createdAt: existingUser.createdAt,
+          lastLogin: existingUser.lastLogin,
+        };
         mockUsers[userIndex] = updatedUser;
         return {
           data: mockUsers[userIndex] as T,
