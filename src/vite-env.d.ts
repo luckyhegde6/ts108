@@ -6,6 +6,8 @@ interface ImportMetaEnv {
   readonly SSR: boolean;
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+declare global {
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
 }
