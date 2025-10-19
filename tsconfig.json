@@ -13,6 +13,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "app/*": ["src/app/*"],
+      "context/*": ["src/context/*"],
+      "hooks/*": ["src/hooks/*"],
+      "services/*": ["src/services/*"],
+      "utils/*": ["src/utils/*"],
+      "test/*": ["src/test/*"],
+      "types/*": ["src/types/*"]
+    },
 
     /* Linting */
     "strict": true,
@@ -26,6 +37,6 @@
     "noUncheckedIndexedAccess": true,
     "types": ["vite/client"]
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
