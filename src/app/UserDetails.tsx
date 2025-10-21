@@ -39,8 +39,10 @@ export function UserDetails() {
     if (!user) return;
 
     try {
-      await actions.updateUser(user.id, formData);
-      setIsEditing(false);
+      const result = await actions.updateUser(user.id, formData);
+      if (result !== undefined) {
+        setIsEditing(false);
+      }
     } catch (error) {
       console.error('Failed to update user:', error);
     }
@@ -76,10 +78,11 @@ export function UserDetails() {
 
       <Card title="User Information">
         {isEditing ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" role="form">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
               <input
+                id="name"
                 type="text"
                 name="name"
                 value={formData.name}
@@ -90,8 +93,9 @@ export function UserDetails() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={formData.email}

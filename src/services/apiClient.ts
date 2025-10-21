@@ -1,6 +1,6 @@
 import type { ApiClient, ApiResponse, User, Metric, UserFormData } from '../types';
 
-class ApiClientImpl implements ApiClient {
+export class ApiClientImpl implements ApiClient {
   private baseUrl: string;
 
   constructor(baseUrl: string = '/api') {

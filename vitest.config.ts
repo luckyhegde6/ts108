@@ -20,19 +20,49 @@ export default defineConfig({
     ],
   },
   test: {
+    isolate: false, // disable isolation to reduce memory overhead
+    maxConcurrency: 2, // run tests sequentially to reduce memory pressure
     globals: true,
     environment: 'jsdom',
+    restoreMocks: true,
+    clearMocks: true,
     setupFiles: ['./src/test/setup.ts'],
+    pool: 'threads', // use threads instead of workers for better memory management
+    poolOptions: {
+      threads: {
+        singleThread: true, // use single thread to avoid memory fragmentation
+      }
+    },
+    onConsoleLog(log, type) {
+    // silence noisy JSDOM warnings
+    if (log.includes('ReactDOMTestUtils')) return false
+  },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       exclude: [
         'node_modules/',
         'src/test/',
+        '.eslintrc.cjs',
+        'src/main.tsx',
         '**/*.d.ts',
         '**/*.config.*',
         'dist/',
+        'vite.config.*',
+        'vitest.config.*',
+        '**/*.test.*',
+        '**/*.spec.*',
+        'src/setupTests.ts',
+        'src/app/*'
       ],
+      thresholds: {
+        global: {
+          statements: 75,
+          branches: 60,
+          functions: 75,
+          lines: 75,
+        },
+      },
     },
   },
 })

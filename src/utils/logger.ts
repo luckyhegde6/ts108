@@ -20,7 +20,7 @@ export interface Logger {
   error(message: string, error?: Error, context?: Record<string, unknown>): void;
 }
 
-class ConsoleLogger implements Logger {
+export class ConsoleLogger implements Logger {
   private minLevel: LogLevel;
 
   constructor(minLevel: LogLevel = LogLevel.INFO) {

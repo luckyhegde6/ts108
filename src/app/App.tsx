@@ -6,8 +6,8 @@ import './App.css';
 
 function App() {
   return (
-    <DashboardProvider>
-      <Router>
+    <Router>
+      <DashboardProvider>
         <div className="min-h-screen bg-gray-50">
           <nav className="bg-white shadow-sm border-b border-gray-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,8 +43,8 @@ function App() {
             </Routes>
           </main>
         </div>
-      </Router>
-    </DashboardProvider>
+      </DashboardProvider>
+    </Router>
   );
 }
 
